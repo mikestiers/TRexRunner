@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TRexRunner.Entities;
 using TRexRunner.Graphics;
 
 namespace TRexRunner
@@ -21,6 +22,8 @@ namespace TRexRunner
         private SoundEffect _sfxButtonPress;
 
         private Texture2D _spriteSheetTexture;
+
+        private Trex _trex;
 
         public TRexRunnerGame()
         {
@@ -45,6 +48,8 @@ namespace TRexRunner
             _sfxButtonPress = Content.Load<SoundEffect>(ASSET_NAME_SFX_BUTTON_PRESS);
 
             _spriteSheetTexture = Content.Load<Texture2D>(ASSET_NAME_SPRITESHEET);
+
+            _trex = new Trex(_spriteSheetTexture, new Vector2(20, 20));
         }
 
         protected override void Update(GameTime gameTime)
@@ -63,10 +68,12 @@ namespace TRexRunner
 
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(_spriteSheetTexture, new Vector2(10, 10), Color.White);
-            _spriteBatch.Draw(_spriteSheetTexture, new Vector2(10, 80), new Rectangle(848, 0, 44, 52), Color.White);
-            Sprite trexSprite = new Sprite(_spriteSheetTexture, 848, 0, 44, 52);
-            trexSprite.Draw(_spriteBatch, new Vector2(40, 160));
+            //_spriteBatch.Draw(_spriteSheetTexture, new Vector2(10, 10), Color.White);
+            //_spriteBatch.Draw(_spriteSheetTexture, new Vector2(10, 80), new Rectangle(848, 0, 44, 52), Color.White);
+            //Sprite trexSprite = new Sprite(_spriteSheetTexture, 848, 0, 44, 52);
+            //trexSprite.Draw(_spriteBatch, new Vector2(40, 160));
+
+            _trex.Draw(_spriteBatch, gameTime);
 
             _spriteBatch.End();
 
